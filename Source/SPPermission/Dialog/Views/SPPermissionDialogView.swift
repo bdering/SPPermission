@@ -58,19 +58,19 @@ class SPPermissionDialogView: UIView {
         self.subtitleLabel.text = "".uppercased()
         self.subtitleLabel.numberOfLines = 0
         self.subtitleLabel.textColor = SPPermissionStyle.DefaultColors.gray
-        self.subtitleLabel.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
+        self.subtitleLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 15)
         self.addSubview(self.subtitleLabel)
         
         self.titleLabel.text = ""
         self.titleLabel.numberOfLines = 0
         self.titleLabel.textColor = SPPermissionStyle.DefaultColors.black
-        self.titleLabel.font = UIFont.systemFont(ofSize: 27, weight: .bold)
+        self.titleLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 27)
         self.addSubview(self.titleLabel)
         
         self.descriptionLabel.text = ""
         self.descriptionLabel.numberOfLines = 0
         self.descriptionLabel.textColor = SPPermissionStyle.DefaultColors.gray
-        self.descriptionLabel.font = UIFont.systemFont(ofSize: 11, weight: .regular)
+        self.descriptionLabel.font = UIFont(name: "AvenirNext-Medium", size: 11)
         self.addSubview(self.descriptionLabel)
     }
     
@@ -213,12 +213,12 @@ class SPPermissionDialogLineView: UIView {
         
         self.titleLabel.numberOfLines = 1
         self.titleLabel.textColor = SPPermissionStyle.DefaultColors.black
-        self.titleLabel.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
+        self.titleLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 15)
         self.addSubview(self.titleLabel)
         
         self.subtitleLabel.numberOfLines = 2
         self.subtitleLabel.textColor = SPPermissionStyle.DefaultColors.gray
-        self.subtitleLabel.font = UIFont.systemFont(ofSize: 13, weight: .regular)
+        self.subtitleLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 13)
         self.addSubview(self.subtitleLabel)
         
         self.button.setTitle(self.allowTitle, for: .normal)

@@ -80,7 +80,7 @@ public class SPPermissionDialogController: UIViewController {
         self.view.addSubview(self.backgroundView)
         
         self.bottomLabel.text = (self.dataSource?.bottomComment ?? "")
-        self.bottomLabel.font = UIFont.systemFont(ofSize: 13, weight: .medium)
+        self.bottomLabel.font = UIFont(name: "AvenirNext-Medium", size: 15)
         self.bottomLabel.textColor = self.colorScheme.white
         self.bottomLabel.numberOfLines = 0
         self.bottomLabel.textAlignment = .center
@@ -228,7 +228,7 @@ public class SPPermissionDialogController: UIViewController {
     }
     
     @objc func tapClose() {
-        self.hide(withDialog: true)
+//        self.hide(withDialog: true)
     }
     
     func hide(withDialog: Bool) {
