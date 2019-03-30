@@ -23,13 +23,14 @@ import UIKit
 import AVFoundation
 import UserNotifications
 import Photos
-import MapKit
-import EventKit
+//import MapKit
+//import EventKit
 import Contacts
-import Speech
-import MediaPlayer
-import HealthKit
-import CoreMotion
+import AddressBook
+//import Speech
+//import MediaPlayer
+//import HealthKit
+//import CoreMotion
 
 public struct SPPermission {
     
@@ -80,24 +81,24 @@ extension SPPermission {
             return SPNotificationPermission()
         case .microphone:
             return SPMicrophonePermission()
-        case .calendar:
-            return SPCalendarPermission()
+//        case .calendar:
+//            return SPCalendarPermission()
         case .contacts:
             return SPContactsPermission()
-        case .reminders:
-            return SPRemindersPermission()
-        case .speech:
-            return SPSpeechPermission()
-        case .locationAlways:
-            return SPLocationPermission(type: SPLocationPermission.SPLocationType.Always)
-        case .locationWhenInUse:
-           return SPLocationPermission(type: SPLocationPermission.SPLocationType.WhenInUse)
-        case .locationAlwaysAndWhenInUse:
-            return SPLocationPermission(type: SPLocationPermission.SPLocationType.AlwaysAndWhenInUse)
-        case .motion:
-            return SPMotionPermission()
-        case .mediaLibrary:
-            return SPMediaLibraryPermission()
+//        case .reminders:
+//            return SPRemindersPermission()
+//        case .speech:
+//            return SPSpeechPermission()
+//        case .locationAlways:
+//            return SPLocationPermission(type: SPLocationPermission.SPLocationType.Always)
+//        case .locationWhenInUse:
+//           return SPLocationPermission(type: SPLocationPermission.SPLocationType.WhenInUse)
+//        case .locationAlwaysAndWhenInUse:
+//            return SPLocationPermission(type: SPLocationPermission.SPLocationType.AlwaysAndWhenInUse)
+//        case .motion:
+//            return SPMotionPermission()
+//        case .mediaLibrary:
+//            return SPMediaLibraryPermission()
         }
     }
 }
@@ -211,29 +212,29 @@ extension SPPermission {
     }
     
     
-    fileprivate struct SPCalendarPermission: SPPermissionInterface {
-        
-        var isAuthorized: Bool {
-            return EKEventStore.authorizationStatus(for: EKEntityType.event) == .authorized
-        }
-        
-        var isDenied: Bool {
-            return EKEventStore.authorizationStatus(for: EKEntityType.event) == .denied
-        }
-        
-        func request(withComlectionHandler complectionHandler: @escaping ()->()?) {
-            let eventStore = EKEventStore()
-            eventStore.requestAccess(to: EKEntityType.event, completion: {
-                (accessGranted: Bool, error: Error?) in
-                DispatchQueue.main.async {
-                    complectionHandler()
-                }
-            })
-        }
-    }
-    
+//    fileprivate struct SPCalendarPermission: SPPermissionInterface {
+//
+//        var isAuthorized: Bool {
+//            return EKEventStore.authorizationStatus(for: EKEntityType.event) == .authorized
+//        }
+//
+//        var isDenied: Bool {
+//            return EKEventStore.authorizationStatus(for: EKEntityType.event) == .denied
+//        }
+//
+//        func request(withComlectionHandler complectionHandler: @escaping ()->()?) {
+//            let eventStore = EKEventStore()
+//            eventStore.requestAccess(to: EKEntityType.event, completion: {
+//                (accessGranted: Bool, error: Error?) in
+//                DispatchQueue.main.async {
+//                    complectionHandler()
+//                }
+//            })
+//        }
+//    }
+
     fileprivate struct SPContactsPermission: SPPermissionInterface {
-        
+
         var isAuthorized: Bool {
             if #available(iOS 9.0, *) {
                 return CNContactStore.authorizationStatus(for: .contacts) == .authorized
@@ -241,7 +242,7 @@ extension SPPermission {
                 return ABAddressBookGetAuthorizationStatus() == .authorized
             }
         }
-        
+
         var isDenied: Bool {
             if #available(iOS 9.0, *) {
                 return CNContactStore.authorizationStatus(for: .contacts) == .denied
@@ -249,7 +250,7 @@ extension SPPermission {
                 return ABAddressBookGetAuthorizationStatus() == .denied
             }
         }
-        
+
         func request(withComlectionHandler complectionHandler: @escaping ()->()?) {
             if #available(iOS 9.0, *) {
                 let store = CNContactStore()
@@ -269,86 +270,86 @@ extension SPPermission {
             }
         }
     }
-    
-    fileprivate struct SPRemindersPermission: SPPermissionInterface {
-        
-        var isAuthorized: Bool {
-            return EKEventStore.authorizationStatus(for: EKEntityType.reminder) == .authorized
-        }
-        
-        var isDenied: Bool {
-            return EKEventStore.authorizationStatus(for: EKEntityType.reminder) == .denied
-        }
-        
-        func request(withComlectionHandler complectionHandler: @escaping ()->()?) {
-            let eventStore = EKEventStore()
-            eventStore.requestAccess(to: EKEntityType.reminder, completion: {
-                (accessGranted: Bool, error: Error?) in
-                DispatchQueue.main.async {
-                    complectionHandler()
-                }
-            })
-        }
-    }
-    
-    fileprivate struct SPBluetoothPermission: SPPermissionInterface {
-        
-        var isAuthorized: Bool {
-            return EKEventStore.authorizationStatus(for: EKEntityType.reminder) == .authorized
-        }
-        
-        var isDenied: Bool {
-            return EKEventStore.authorizationStatus(for: EKEntityType.reminder) == .denied
-        }
-        
-        func request(withComlectionHandler complectionHandler: @escaping ()->()?) {
-            let eventStore = EKEventStore()
-            eventStore.requestAccess(to: EKEntityType.reminder, completion: {
-                (accessGranted: Bool, error: Error?) in
-                DispatchQueue.main.async {
-                    complectionHandler()
-                }
-            })
-        }
-    }
-    
-    fileprivate struct SPSpeechPermission: SPPermissionInterface {
-        
-        var isAuthorized: Bool {
-            return SFSpeechRecognizer.authorizationStatus() == .authorized
-        }
-        
-        var isDenied: Bool {
-            return SFSpeechRecognizer.authorizationStatus() == .denied
-        }
-        
-        func request(withComlectionHandler complectionHandler: @escaping ()->()?) {
-            SFSpeechRecognizer.requestAuthorization { status in
-                DispatchQueue.main.async {
-                    complectionHandler()
-                }
-            }
-        }
-    }
-    
-    fileprivate struct SPMediaLibraryPermission: SPPermissionInterface {
-        
-        var isAuthorized: Bool {
-            return MPMediaLibrary.authorizationStatus() == .authorized
-        }
-        
-        var isDenied: Bool {
-            return MPMediaLibrary.authorizationStatus() == .denied
-        }
-        
-        func request(withComlectionHandler complectionHandler: @escaping ()->()?) {
-            MPMediaLibrary.requestAuthorization() { status in
-                DispatchQueue.main.async {
-                    complectionHandler()
-                }
-            }
-        }
-    }
+
+//    fileprivate struct SPRemindersPermission: SPPermissionInterface {
+//
+//        var isAuthorized: Bool {
+//            return EKEventStore.authorizationStatus(for: EKEntityType.reminder) == .authorized
+//        }
+//
+//        var isDenied: Bool {
+//            return EKEventStore.authorizationStatus(for: EKEntityType.reminder) == .denied
+//        }
+//
+//        func request(withComlectionHandler complectionHandler: @escaping ()->()?) {
+//            let eventStore = EKEventStore()
+//            eventStore.requestAccess(to: EKEntityType.reminder, completion: {
+//                (accessGranted: Bool, error: Error?) in
+//                DispatchQueue.main.async {
+//                    complectionHandler()
+//                }
+//            })
+//        }
+//    }
+//
+//    fileprivate struct SPBluetoothPermission: SPPermissionInterface {
+//
+//        var isAuthorized: Bool {
+//            return EKEventStore.authorizationStatus(for: EKEntityType.reminder) == .authorized
+//        }
+//
+//        var isDenied: Bool {
+//            return EKEventStore.authorizationStatus(for: EKEntityType.reminder) == .denied
+//        }
+//
+//        func request(withComlectionHandler complectionHandler: @escaping ()->()?) {
+//            let eventStore = EKEventStore()
+//            eventStore.requestAccess(to: EKEntityType.reminder, completion: {
+//                (accessGranted: Bool, error: Error?) in
+//                DispatchQueue.main.async {
+//                    complectionHandler()
+//                }
+//            })
+//        }
+//    }
+//
+//    fileprivate struct SPSpeechPermission: SPPermissionInterface {
+//
+//        var isAuthorized: Bool {
+//            return SFSpeechRecognizer.authorizationStatus() == .authorized
+//        }
+//
+//        var isDenied: Bool {
+//            return SFSpeechRecognizer.authorizationStatus() == .denied
+//        }
+//
+//        func request(withComlectionHandler complectionHandler: @escaping ()->()?) {
+//            SFSpeechRecognizer.requestAuthorization { status in
+//                DispatchQueue.main.async {
+//                    complectionHandler()
+//                }
+//            }
+//        }
+//    }
+//
+//    fileprivate struct SPMediaLibraryPermission: SPPermissionInterface {
+//
+//        var isAuthorized: Bool {
+//            return MPMediaLibrary.authorizationStatus() == .authorized
+//        }
+//
+//        var isDenied: Bool {
+//            return MPMediaLibrary.authorizationStatus() == .denied
+//        }
+//
+//        func request(withComlectionHandler complectionHandler: @escaping ()->()?) {
+//            MPMediaLibrary.requestAuthorization() { status in
+//                DispatchQueue.main.async {
+//                    complectionHandler()
+//                }
+//            }
+//        }
+//    }
     
     fileprivate struct SPLocationPermission: SPPermissionInterface {
         
@@ -423,31 +424,31 @@ extension SPPermission {
         }
     }
     
-    private struct SPMotionPermission: SPPermissionInterface {
-        
-        var isAuthorized: Bool {
-            if #available(iOS 11.0, *) {
-                return CMMotionActivityManager.authorizationStatus() == .authorized
-            }
-            return false
-        }
-        
-        var isDenied: Bool {
-            if #available(iOS 11.0, *) {
-                return CMMotionActivityManager.authorizationStatus() == .denied
-            }
-            return false
-        }
-        
-        func request(withComlectionHandler complectionHandler: @escaping ()->()?) {
-            let manager = CMMotionActivityManager()
-            let today = Date()
-            
-            manager.queryActivityStarting(from: today, to: today, to: OperationQueue.main, withHandler: { (activities: [CMMotionActivity]?, error: Error?) -> () in
-                complectionHandler()
-                manager.stopActivityUpdates()
-            })
-        }
-    }
+//    private struct SPMotionPermission: SPPermissionInterface {
+//
+//        var isAuthorized: Bool {
+//            if #available(iOS 11.0, *) {
+//                return CMMotionActivityManager.authorizationStatus() == .authorized
+//            }
+//            return false
+//        }
+//
+//        var isDenied: Bool {
+//            if #available(iOS 11.0, *) {
+//                return CMMotionActivityManager.authorizationStatus() == .denied
+//            }
+//            return false
+//        }
+//
+//        func request(withComlectionHandler complectionHandler: @escaping ()->()?) {
+//            let manager = CMMotionActivityManager()
+//            let today = Date()
+//
+//            manager.queryActivityStarting(from: today, to: today, to: OperationQueue.main, withHandler: { (activities: [CMMotionActivity]?, error: Error?) -> () in
+//                complectionHandler()
+//                manager.stopActivityUpdates()
+//            })
+//        }
+//    }
 
 }

@@ -169,8 +169,8 @@ class SPPermissionDialogLineView: UIView {
             self.imageView.isHidden = false
         } else {
             switch permission {
-            case .calendar:
-                self.iconView.type = .calendar
+//            case .calendar:
+//                self.iconView.type = .calendar
             case .camera:
                 self.iconView.type = .camera
             case .contacts:
@@ -181,16 +181,16 @@ class SPPermissionDialogLineView: UIView {
                 self.iconView.type = .ball
             case .photoLibrary:
                 self.iconView.type = .photoLibrary
-            case .reminders:
-                self.iconView.type = .documents
-            case .speech:
-                self.iconView.type = .micro
-            case .locationWhenInUse, .locationAlways, .locationAlwaysAndWhenInUse:
-                self.iconView.type = .compass
-            case .motion:
-                self.iconView.type = .windmill
-            case .mediaLibrary:
-                self.iconView.type = .headphones
+//            case .reminders:
+//                self.iconView.type = .documents
+//            case .speech:
+//                self.iconView.type = .micro
+//            case .locationWhenInUse, .locationAlways, .locationAlwaysAndWhenInUse:
+//                self.iconView.type = .compass
+//            case .motion:
+//                self.iconView.type = .windmill
+//            case .mediaLibrary:
+//                self.iconView.type = .headphones
             }
         }
         

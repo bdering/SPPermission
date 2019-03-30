@@ -27,16 +27,16 @@ import UIKit
     case photoLibrary = 1
     case notification = 2
     case microphone = 3
-    case calendar = 4
+//    case calendar = 4
     case contacts = 5
-    case reminders = 6
-    case speech = 7
-    @available(iOS, obsoleted: 11, renamed: "locationAlwaysAndWhenInUse")
-    case locationAlways = 8
-    case locationWhenInUse = 9
-    case locationAlwaysAndWhenInUse = 10
-    case motion = 11
-    case mediaLibrary = 12
+//    case reminders = 6
+//    case speech = 7
+//    @available(iOS, obsoleted: 11, renamed: "locationAlwaysAndWhenInUse")
+//    case locationAlways = 8
+//    case locationWhenInUse = 9
+//    case locationAlwaysAndWhenInUse = 10
+//    case motion = 11
+//    case mediaLibrary = 12
     
     var name: String {
         switch self {
@@ -48,20 +48,20 @@ import UIKit
             return "Notification"
         case .microphone:
             return "Microphone"
-        case .calendar:
-            return "Calendar"
+//        case .calendar:
+//            return "Calendar"
         case .contacts:
             return "Contacts"
-        case .reminders:
-            return "Reminders"
-        case .speech:
-            return "Speech"
-        case .locationAlways, .locationWhenInUse, .locationAlwaysAndWhenInUse:
-            return "Location"
-        case .motion:
-            return "Motion"
-        case .mediaLibrary:
-            return "Media Library"
+//        case .reminders:
+//            return "Reminders"
+//        case .speech:
+//            return "Speech"
+//        case .locationAlways, .locationWhenInUse, .locationAlwaysAndWhenInUse:
+//            return "Location"
+//        case .motion:
+//            return "Motion"
+//        case .mediaLibrary:
+//            return "Media Library"
         }
     }
     
@@ -75,24 +75,24 @@ import UIKit
             return nil
         case .microphone:
             return "NSMicrophoneUsageDescription"
-        case .calendar:
-            return "NSCalendarsUsageDescription"
+//        case .calendar:
+//            return "NSCalendarsUsageDescription"
         case .contacts:
             return "NSContactsUsageDescription"
-        case .reminders:
-            return "NSRemindersUsageDescription"
-        case .speech:
-            return "NSSpeechRecognitionUsageDescription"
-        case .locationAlways:
-            return "NSLocationAlwaysUsageDescription"
-        case .locationWhenInUse:
-            return "NSLocationWhenInUseUsageDescription"
-        case .locationAlwaysAndWhenInUse:
-            return "NSLocationAlwaysAndWhenInUseUsageDescription"
-        case .motion:
-            return "NSMotionUsageDescription"
-        case .mediaLibrary:
-            return "NSAppleMusicUsageDescription"
+//        case .reminders:
+//            return "NSRemindersUsageDescription"
+//        case .speech:
+//            return "NSSpeechRecognitionUsageDescription"
+//        case .locationAlways:
+//            return "NSLocationAlwaysUsageDescription"
+//        case .locationWhenInUse:
+//            return "NSLocationWhenInUseUsageDescription"
+//        case .locationAlwaysAndWhenInUse:
+//            return "NSLocationAlwaysAndWhenInUseUsageDescription"
+//        case .motion:
+//            return "NSMotionUsageDescription"
+//        case .mediaLibrary:
+//            return "NSAppleMusicUsageDescription"
         }
     }
 }

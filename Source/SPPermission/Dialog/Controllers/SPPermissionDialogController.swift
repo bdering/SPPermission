@@ -366,7 +366,7 @@ public class SPPermissionDialogController: UIViewController {
     }
     
     @objc func handleTap() {
-        self.hide(withDialog: true)
+//        self.hide(withDialog: true)
     }
     
     //MARK: - other
@@ -381,8 +381,8 @@ extension SPPermissionDialogController {
         switch permission {
         case .camera:
             return "Allow app for use camera"
-        case .calendar:
-            return "Application can add events to calendar"
+//        case .calendar:
+//            return "Application can add events to calendar"
         case .contacts:
             return "Access for your contacts and phones"
         case .microphone:
@@ -391,18 +391,18 @@ extension SPPermissionDialogController {
             return "Get important information without opening app."
         case .photoLibrary:
             return "Access for save photos in your gallery"
-        case .reminders:
-            return "Application can create new task"
-        case .speech:
-            return "Allow check you voice"
-        case .locationAlways,
-             .locationWhenInUse,
-             .locationAlwaysAndWhenInUse:
-            return "App will can check your location"
-        case .motion:
-            return "Allow reports motion and environment-related data"
-        case .mediaLibrary:
-            return "Allow check your media"
+//        case .reminders:
+//            return "Application can create new task"
+//        case .speech:
+//            return "Allow check you voice"
+//        case .locationAlways,
+//             .locationWhenInUse,
+//             .locationAlwaysAndWhenInUse:
+//            return "App will can check your location"
+//        case .motion:
+//            return "Allow reports motion and environment-related data"
+//        case .mediaLibrary:
+//            return "Allow check your media"
         }
     }
 }
